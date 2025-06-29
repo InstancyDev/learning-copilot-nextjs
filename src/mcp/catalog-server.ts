@@ -11,11 +11,6 @@ import type {
 } from '@/types/Catalog';
 import type { LearningTabType, LearningFilters } from '@/types/Learning';
 
-// Import all catalog data parts
-import { catalogDataPart1 } from '@/data/catalog-data-part1';
-import { catalogDataPart2 } from '@/data/catalog-data-part2';
-import { catalogDataPart3 } from '@/data/catalog-data-part3';
-import { catalogDataPart4 } from '@/data/catalog-data-part4';
 import { CONTENT_TYPES } from '@/types/index';
 import { LearningItem } from '@/types/Learning';
 // Import learning service
@@ -74,17 +69,10 @@ const enhanceCatalogDataWithViewType = (items: any[]): CatalogItem[] => {
   });
 };
 
-// Combine all catalog data and enhance with ViewType
-const mockCatalogData: CatalogItem[] = enhanceCatalogDataWithViewType([
-  ...catalogDataPart1,
-  ...catalogDataPart2,
-  ...catalogDataPart3,
-  ...catalogDataPart4
-]);
 
 // MCP Catalog Server Class with Enhanced Functionality
 export class CatalogMCPServer {
-  private catalogData: CatalogItem[] = mockCatalogData;
+  private catalogData: CatalogItem[] = [];
  
   // MCP Resources - provide catalog data context
   getResources(): CatalogResource[] {
