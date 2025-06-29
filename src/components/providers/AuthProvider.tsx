@@ -43,6 +43,41 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  // Check for session data and redirect if not found
+  useEffect(() => {
+    const checkSessionAndRedirect = () => {
+      if (typeof window === 'undefined') return;
+
+      const sessionKey = `userContext_${window.location.origin}`;
+      const sessionData = sessionStorage.getItem(sessionKey);
+      const hasAuthKey = searchParams.get('authKey');
+      
+      // Check if session data is empty, null, or undefined
+      const isSessionEmpty = !sessionData || sessionData === 'null' || sessionData === 'undefined' || sessionData.trim() === '';
+      
+      // Only redirect if there's no authKey AND session is empty/null/undefined
+      if (!hasAuthKey && isSessionEmpty) {
+        console.log('No authKey in URL and no session data found, redirecting to LogOutURL');
+        console.log('Session key:', sessionKey);
+        console.log('Session data:', sessionData);
+        console.log('Has authKey:', !!hasAuthKey);
+        window.location.href = API_CONFIG.LogOutURL;
+        return;
+      }
+      
+      // If we have either authKey or valid session data, continue
+      console.log('Session check passed - continuing with app initialization');
+      console.log('Session key:', sessionKey);
+      console.log('Session data exists:', !!sessionData);
+      console.log('Has authKey:', !!hasAuthKey);
+    };
+
+    // Only check session if we haven't attempted authentication yet
+    if (!authAttempted) {
+      checkSessionAndRedirect();
+    }
+  }, [authAttempted, searchParams]);
+
   // Initialize user from URL authKey or existing session
   useEffect(() => {
     const authenticate = async () => {
