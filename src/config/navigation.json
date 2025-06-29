@@ -1,0 +1,545 @@
+{
+  "navigation": {
+    "brand": {
+      "name": "Learning Portal",
+      "logo": "/images/logo.png",
+      "version": "v2.0"
+    },
+    "userMenu": {
+      "showProfile": true,
+      "showSettings": true,
+      "showLogout": true
+    },
+    "defaultView": "ai-agent",
+    "menuItems": [
+      {
+        "id": "ai-agent",
+        "title": "AI Assistant",
+        "icon": "bot",
+        "url": "/ai-agent",
+        "type": "component",
+        "component": "AIAssistant",
+        "active": true,
+        "requiredRoles": ["Learner", "Author", "Admin", "Site Admin"],
+        "badge": null,
+        "description": "Get instant help with AI-powered assistance"
+      },
+      {
+        "id": "catalog",
+        "title": "Learning Catalog",
+        "icon": "bookOpen",
+        "url": "/catalog",
+        "type": "component",
+        "component": "CatalogListing",
+        "active": false,
+        "requiredRoles": ["Learner", "Author", "Admin", "Site Admin"],
+        "badge": null,
+        "description": "Browse and discover learning content"
+      },
+      {
+        "id": "my-learning",
+        "title": "My Learning",
+        "icon": "book",
+        "url": "/my-learning",
+        "type": "component",
+        "component": "MyLearning",
+        "active": false,
+        "requiredRoles": ["Learner", "Author", "Admin", "Site Admin"],
+        "badge": {
+          "type": "count",
+          "source": "learning-progress",
+          "color": "blue"
+        },
+        "description": "Track your learning progress and continue courses"
+      },
+      {
+        "id": "communities",
+        "title": "Communities",
+        "icon": "users",
+        "url": "/communities",
+        "type": "component",
+        "component": "Communities",
+        "active": false,
+        "requiredRoles": ["Learner", "Author", "Admin", "Site Admin"],
+        "badge": {
+          "type": "notification",
+          "source": "community-updates",
+          "color": "green"
+        },
+        "description": "Connect and collaborate with peers"
+      },
+      {
+        "id": "analytics",
+        "title": "Learning Analytics",
+        "icon": "barChart3",
+        "url": "/analytics",
+        "type": "component", 
+        "component": "LearningAnalytics",
+        "active": false,
+        "requiredRoles": ["Learner", "Author", "Admin", "Site Admin"],
+        "badge": null,
+        "description": "View detailed learning insights and progress"
+      },
+      {
+        "id": "content-creation",
+        "title": "Content Creation",
+        "icon": "edit",
+        "url": "/content-creation",
+        "type": "component",
+        "component": "ContentCreation",
+        "active": false,
+        "requiredRoles": ["Author", "Admin", "Site Admin"],
+        "badge": {
+          "type": "count",
+          "source": "drafts",
+          "color": "orange"
+        },
+        "description": "Create and manage learning content"
+      },
+      {
+        "id": "admin",
+        "title": "Administration",
+        "icon": "settings",
+        "url": "/admin",
+        "type": "component",
+        "component": "Administration",
+        "active": false,
+        "requiredRoles": ["Admin", "Site Admin"],
+        "badge": {
+          "type": "notification",
+          "source": "admin-alerts",
+          "color": "red"
+        },
+        "description": "System administration and user management",
+        "subMenuItems": [
+          {
+            "id": "user-management",
+            "title": "User Management",
+            "icon": "users",
+            "url": "/admin/users",
+            "type": "component",
+            "component": "UserManagement",
+            "active": false,
+            "requiredRoles": ["Admin", "Site Admin"],
+            "description": "Manage users and permissions"
+          },
+          {
+            "id": "content-management",
+            "title": "Content Management", 
+            "icon": "fileText",
+            "url": "/admin/content",
+            "type": "component",
+            "component": "ContentManagement",
+            "active": false,
+            "requiredRoles": ["Admin", "Site Admin"],
+            "description": "Manage learning content"
+          },
+          {
+            "id": "system-settings",
+            "title": "System Settings",
+            "icon": "settings",
+            "url": "/admin/settings",
+            "type": "component",
+            "component": "SystemSettings",
+            "active": false,
+            "requiredRoles": ["Site Admin"],
+            "description": "Configure system settings"
+          },
+          {
+            "id": "reports",
+            "title": "Reports",
+            "icon": "pieChart",
+            "url": "/admin/reports",
+            "type": "component",
+            "component": "AdminReports",
+            "active": false,
+            "requiredRoles": ["Admin", "Site Admin"],
+            "description": "Generate system reports"
+          }
+        ]
+      },
+      {
+        "id": "certifications",
+        "title": "Certifications",
+        "icon": "award",
+        "url": "/certifications",
+        "type": "component",
+        "component": "Certifications",
+        "active": false,
+        "requiredRoles": ["Learner", "Author", "Admin", "Site Admin"],
+        "badge": {
+          "type": "count",
+          "source": "earned-certificates",
+          "color": "purple"
+        },
+        "description": "View and manage your earned certifications"
+      },
+      {
+        "id": "calendar",
+        "title": "Learning Calendar",
+        "icon": "calendar",
+        "url": "/calendar",
+        "type": "component",
+        "component": "LearningCalendar",
+        "active": false,
+        "requiredRoles": ["Learner", "Author", "Admin", "Site Admin"],
+        "badge": {
+          "type": "count",
+          "source": "upcoming-events",
+          "color": "indigo"
+        },
+        "description": "Manage your learning schedule and events"
+      },
+      {
+        "id": "notifications",
+        "title": "Notifications",
+        "icon": "bell",
+        "url": "/notifications",
+        "type": "component",
+        "component": "Notifications",
+        "active": false,
+        "requiredRoles": ["Learner", "Author", "Admin", "Site Admin"],
+        "badge": {
+          "type": "count",
+          "source": "unread-notifications",
+          "color": "red"
+        },
+        "description": "View and manage your notifications"
+      },
+      {
+        "id": "co-create",
+        "title": "Co-Create Knowledge",
+        "icon": "sparkles",
+        "url": "/co-create",
+        "type": "component",
+        "component": "CoCreate",
+        "active": false,
+        "requiredRoles": ["Author", "Admin", "Site Admin"],
+        "badge": {
+          "type": "count",
+          "source": "collaboration-requests",
+          "color": "yellow"
+        },
+        "description": "Collaborate on content creation with AI"
+      }
+    ],
+    "footerItems": [
+      {
+        "id": "help",
+        "title": "Help & Support",
+        "icon": "helpCircle",
+        "url": "/help",
+        "type": "component",
+        "component": "HelpSupport",
+        "active": false,
+        "requiredRoles": ["Learner", "Author", "Admin", "Site Admin"],
+        "description": "Get help and support"
+      },
+      {
+        "id": "feedback",
+        "title": "Feedback",
+        "icon": "messageSquare",
+        "url": "/feedback",
+        "type": "modal",
+        "component": "FeedbackModal",
+        "active": false,
+        "requiredRoles": ["Learner", "Author", "Admin", "Site Admin"],
+        "description": "Share your feedback with us"
+      },
+      {
+        "id": "privacy",
+        "title": "Privacy Policy",
+        "icon": "shield",
+        "url": "/privacy",
+        "type": "component",
+        "component": "PrivacyPolicy",
+        "active": false,
+        "requiredRoles": ["Learner", "Author", "Admin", "Site Admin"],
+        "description": "View privacy policy"
+      },
+      {
+        "id": "terms",
+        "title": "Terms of Service",
+        "icon": "fileText",
+        "url": "/terms",
+        "type": "component",
+        "component": "TermsOfService",
+        "active": false,
+        "requiredRoles": ["Learner", "Author", "Admin", "Site Admin"],
+        "description": "View terms of service"
+      }
+    ]
+  },
+  "badgeConfiguration": {
+    "learning-progress": {
+      "endpoint": "/api/user/learning-progress-count",
+      "refreshInterval": 300000,
+      "showZero": false,
+      "maxDisplayValue": 99
+    },
+    "community-updates": {
+      "endpoint": "/api/user/community-notifications",
+      "refreshInterval": 60000,
+      "showZero": false,
+      "maxDisplayValue": 99
+    },
+    "drafts": {
+      "endpoint": "/api/user/content-drafts-count",
+      "refreshInterval": 120000,
+      "showZero": true,
+      "maxDisplayValue": 99
+    },
+    "admin-alerts": {
+      "endpoint": "/api/admin/system-alerts",
+      "refreshInterval": 30000,
+      "showZero": false,
+      "maxDisplayValue": 99
+    },
+    "earned-certificates": {
+      "endpoint": "/api/user/certificates-count",
+      "refreshInterval": 600000,
+      "showZero": true,
+      "maxDisplayValue": 999
+    },
+    "upcoming-events": {
+      "endpoint": "/api/user/upcoming-events-count",
+      "refreshInterval": 300000,
+      "showZero": false,
+      "maxDisplayValue": 99
+    },
+    "unread-notifications": {
+      "endpoint": "/api/user/unread-notifications-count",
+      "refreshInterval": 30000,
+      "showZero": false,
+      "maxDisplayValue": 99
+    },
+    "collaboration-requests": {
+      "endpoint": "/api/user/collaboration-requests-count",
+      "refreshInterval": 120000,
+      "showZero": false,
+      "maxDisplayValue": 99
+    }
+  },
+  "theme": {
+    "primaryColor": "#3B82F6",
+    "secondaryColor": "#64748B",
+    "accentColor": "#10B981",
+    "warningColor": "#F59E0B",
+    "errorColor": "#EF4444",
+    "successColor": "#10B981",
+    "sidebarWidth": "320px",
+    "collapsedWidth": "80px",
+    "headerHeight": "64px",
+    "borderRadius": "8px",
+    "animation": {
+      "enabled": true,
+      "duration": 200,
+      "easing": "ease-in-out"
+    },
+    "darkMode": {
+      "enabled": true,
+      "default": false,
+      "systemPreference": true
+    },
+    "fonts": {
+      "primary": "Inter, system-ui, sans-serif",
+      "secondary": "system-ui, sans-serif",
+      "mono": "ui-monospace, monospace"
+    }
+  },
+  "features": {
+    "search": {
+      "enabled": true,
+      "placeholder": "Search learning content...",
+      "hotkey": "Ctrl+K",
+      "globalSearch": true,
+      "recentSearches": true,
+      "maxRecentSearches": 5
+    },
+    "breadcrumbs": {
+      "enabled": true,
+      "showHome": true,
+      "maxItems": 4,
+      "separator": "/"
+    },
+    "notifications": {
+      "enabled": true,
+      "position": "top-right",
+      "autoHide": 5000,
+      "maxVisible": 5,
+      "sound": false
+    },
+    "sidebar": {
+      "collapsible": true,
+      "defaultCollapsed": false,
+      "persistState": true,
+      "autoCollapse": false,
+      "hoverExpand": true
+    },
+    "tour": {
+      "enabled": true,
+      "autoStart": false,
+      "skipForReturningUsers": true
+    },
+    "shortcuts": {
+      "enabled": true,
+      "showHelp": "Shift+?",
+      "globalSearch": "Ctrl+K",
+      "toggleSidebar": "Ctrl+B"
+    }
+  },
+  "security": {
+    "sessionTimeout": 3600000,
+    "refreshTokenInterval": 1800000,
+    "requireReauth": ["admin", "user-management", "system-settings"],
+    "maxConcurrentSessions": 3,
+    "enforceHTTPS": true,
+    "csrfProtection": true
+  },
+  "integrations": {
+    "flowise": {
+      "baseUrl": "https://your-flowise-instance.com",
+      "chatflowId": "your-chatflow-id-here",
+      "apiKey": "your-api-key-here",
+      "theme": "light",
+      "welcomeMessage": "Hello! I'm your AI learning assistant. How can I help you today?",
+      "placeholder": "Ask me anything about your learning...",
+      "errorMessage": "Sorry, I'm having trouble connecting. Please try again later.",
+      "timeout": 30000,
+      "retryAttempts": 3,
+      "features": {
+        "fileUpload": true,
+        "voiceInput": false,
+        "typing": true,
+        "timestamps": false
+      }
+    },
+    "analytics": {
+      "enabled": true,
+      "trackPageViews": true,
+      "trackUserActions": true,
+      "trackErrors": true,
+      "provider": "google-analytics",
+      "trackingId": "GA-XXXXX-X",
+      "anonymizeIP": true
+    },
+    "sso": {
+      "enabled": false,
+      "providers": ["google", "microsoft", "okta"],
+      "autoRedirect": false,
+      "allowLocalAuth": true
+    }
+  },
+  "api": {
+    "baseUrl": "/api",
+    "timeout": 10000,
+    "retryAttempts": 3,
+    "retryDelay": 1000,
+    "endpoints": {
+      "navigation": "/navigation/menu",
+      "user": "/user/profile",
+      "learning": "/learning",
+      "catalog": "/catalog",
+      "communities": "/communities",
+      "admin": "/admin",
+      "notifications": "/notifications",
+      "analytics": "/analytics",
+      "auth": "/auth",
+      "content": "/content",
+      "upload": "/upload"
+    },
+    "headers": {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    }
+  },
+  "permissions": {
+    "roleHierarchy": {
+      "Site Admin": ["Admin", "Author", "Learner"],
+      "Admin": ["Author", "Learner"],
+      "Author": ["Learner"],
+      "Learner": []
+    },
+    "menuAccess": {
+      "strict": true,
+      "fallbackRoute": "/ai-agent",
+      "unauthorizedMessage": "You don't have permission to access this section.",
+      "showUnauthorizedItems": false
+    },
+    "featureFlags": {
+      "betaFeatures": false,
+      "experimentalUI": false,
+      "advancedAnalytics": false
+    }
+  },
+  "localization": {
+    "enabled": true,
+    "defaultLocale": "en-US",
+    "supportedLocales": [
+      "en-US",
+      "es-ES", 
+      "fr-FR",
+      "de-DE",
+      "it-IT",
+      "pt-BR",
+      "ja-JP",
+      "ko-KR",
+      "zh-CN"
+    ],
+    "fallbackLocale": "en-US",
+    "autoDetect": true,
+    "persistSelection": true
+  },
+  "performance": {
+    "lazyLoading": {
+      "enabled": true,
+      "components": [
+        "Communities",
+        "Administration", 
+        "LearningAnalytics",
+        "ContentCreation",
+        "Certifications"
+      ],
+      "threshold": 100
+    },
+    "caching": {
+      "navigation": 3600000,
+      "userData": 300000,
+      "badges": 60000,
+      "content": 1800000
+    },
+    "preload": [
+      "CatalogListing",
+      "MyLearning"
+    ],
+    "compression": {
+      "enabled": true,
+      "algorithm": "gzip"
+    },
+    "cdn": {
+      "enabled": false,
+      "baseUrl": "https://cdn.yourapp.com"
+    }
+  },
+  "accessibility": {
+    "enabled": true,
+    "highContrast": false,
+    "reducedMotion": false,
+    "screenReader": true,
+    "keyboardNavigation": true,
+    "focusVisible": true
+  },
+  "logging": {
+    "enabled": true,
+    "level": "info",
+    "destinations": ["console", "api"],
+    "retention": 30,
+    "anonymize": true
+  },
+  "maintenance": {
+    "enabled": false,
+    "message": "We're performing scheduled maintenance. Please check back soon.",
+    "allowedRoles": ["Site Admin"],
+    "redirectUrl": "/maintenance"
+  }
+}
