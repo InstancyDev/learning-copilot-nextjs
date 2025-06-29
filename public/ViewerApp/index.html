@@ -1,0 +1,139 @@
+﻿<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT" />
+    <title>PDF Document Viewer</title>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="resources/common/css/all.min.css"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="resources/common/css/v4-shims.min.css"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="resources/common/css/swiper.min.css"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="resources/common/css/circle-progress.css"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="resources/viewer/css/viewer.css"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="resources/viewer/css/viewer.mobile.css"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="resources/viewer/css/viewer-light.css"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-sanitize.min.js"></script>
+    <script
+      type="text/javascript"
+      src="resources/common/js/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="resources/common/js/swiper.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="resources/common/js/es6-promise.auto.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="resources/viewer/js/viewer.js?v=6666"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="editor.css" />
+    <script src="app.js?v=00"></script>
+    <script src="app.controller.main.js?v=00"></script>
+    <script> 
+      var basicPlatformData = {"WebAPIUrl":"https://edemowebapi.instancy.com/api/","LMSUrl":"http://enterprisedemo-admin.instancy.com/","LearnerURL":"http://enterprisedemo.instancy.com","ShowUrlComponent":false}
+      var UserContext = JSON.parse(
+        sessionStorage.getItem(
+          'userContext_https://' + window.location.hostname
+        )
+      );
+    </script>
+    <style>
+      #gd-container {
+        top: 0px !important;
+      }
+      #gd-pages img {
+        width: 100% !important;
+      }
+    </style>
+  </head>
+  <body
+    ng-app="AsposeViewerApp"
+    id="IDAsposeViewerApp"
+    style="padding-top: 70px"
+  >
+    <div ng-controller="ViewerController">
+      <div id="page-loading">
+        <div
+          style="padding-top: 300px"
+          class="text-center w-100 overlayBackground d-flex align-items-center justify-content-center"
+        >
+          <span class="btn">
+            <i class="fas fa-spinner fa-spin fa-5x"></i>
+          </span>
+        </div>
+        <div id="loader" style="display: none"></div>
+      </div>
+      <div id="viewer"></div>
+      <div id="returnModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <p>Are you sure you want to return?</p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="closeWindow()"
+              >
+                Yes
+              </button>
+              <button
+                type="button"
+                class="btn btn-default"
+                data-dismiss="modal"
+              >
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

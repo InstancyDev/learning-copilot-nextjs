@@ -1,0 +1,322 @@
+:root {
+    --bg-style: url('./assets/home_sample.jpeg'); /* Default background */
+    --bg-color: transparent; /* Default color (can be changed dynamically) */
+  }
+  
+  .background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    background-image: var(--bg-style);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+    filter: blur(5px);
+  }
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.justify-start {
+    justify-content: flex-start;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.overflow-y-scroll {
+    overflow-y: scroll;
+}
+
+.flex-grow {
+    flex-grow: 1;
+}
+
+.min-w-full {
+    min-width: 100%;
+}
+
+.px-3 {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.pt-\[70px\] {
+    padding-top: 70px;
+}
+
+.relative {
+    position: relative;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.top-0 {
+    top: 0;
+}
+
+.z-10 {
+    z-index: 10;
+}
+
+.left-0 {
+    left: 0;
+}
+
+.h-\[50px\] {
+    height: 50px;
+}
+
+.h {
+    height: 100vh;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.main-container>div {
+    flex-basis: 35%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+.header-section {
+    background-color: rgb(59, 129, 246);
+}
+
+.footer-section {
+    background-color: rgb(59, 129, 246);
+}
+
+flowise-fullchatbot {
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+h2 {
+    margin: 0;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+
+.videoSectionWrap {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    justify-content: flex-end;
+  }
+  
+  .videoSectionWrap .videoWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .videoWrap .videoEle {
+    width: 100%;
+    max-height: 1000px;
+    height: auto;
+    transform: scale(1.5);
+  }
+  .hide{
+    height: 0;
+    display: none;
+  }
+
+  .noneDisplay{
+    display: none;
+  }
+
+  .flexDisplay {
+    display: block;
+  }
+
+  .card {
+    background-color: "rgba(255, 255, 255, 0)";
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    margin-top: 20px;
+    /* flex-grow: 1; Allow the card to grow to take available space */
+  display: flex; 
+  flex-direction: row;
+  height: 100%;
+  }
+  
+.chatbotContainer {
+    background-color: "rgba(255, 255, 255, 0)";
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.card_chatbot {
+    background-color: "rgba(255, 255, 255, 0)";
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+  .videoSectionWrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 50px;
+  }
+
+  #toast-container {
+    position: fixed;
+    bottom: 20px; /* Positioned 20px from the bottom */
+    left: 20px;   /* Positioned 20px from the left */
+    z-index: 1000;
+  }
+  
+  .toast {
+    visibility: hidden;
+    min-width: 200px;
+    margin-bottom: 15px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px 20px;
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .toast.show {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .toast.hide {
+    opacity: 0;
+  }
+  
+.buttons{
+    margin-top: 50px;
+    text-align: center;
+}
+.buttons .button{
+    border: none;
+    padding: 8px 16px;
+    border-radius: 50px;
+    color: #007bff;
+    background-color: #fff;
+}
+.buttons .button:hover{
+    background-color: #fae0e0;
+    cursor: pointer;
+}
+
+.close-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+    padding: 0 10px;
+}
+
+.close-button:hover {
+    color: #ffffff; /* Change color on hover */
+}
+
+
+#loadingOverlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+    z-index: 9999;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+.loadingMessage {
+    color: white;
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

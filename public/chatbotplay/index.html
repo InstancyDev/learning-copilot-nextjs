@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Role Play</title>
+    <link rel="icon" href="./assets/instancy28.png" />
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: "rgba(255, 255, 255, 0)";
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .message-bubble {
+            background-color: #d0e7ffcb;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            font-size: 18px;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .start-button {
+            background-color: #025dbe;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .start-button:hover {
+            background-color: #357ABD;
+        }
+
+        p {
+            text-align: justify;
+            color: #000000;
+            font-size:20px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body style="padding: 0 !important; margin: 0 !important;">
+    <div class="background-container"></div>
+    <div class="overlay"></div> 
+
+    <script>
+        // const startBtn = document.getElementById('start-btn');
+
+        // startBtn.addEventListener('click', function() { 
+        //     window.location.href = "main.html"; 
+        //     history.pushState(null, null, window.location.href);
+        // });
+        function preventBack() {
+        window.history.forward();
+    }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () {
+        null
+    };
+    window.onload = function () {
+  InitializeRolePlay();
+};
+var rolePlayData;
+var _ContentID = "";
+var _FolderPath = "";
+var _PreviewPath = "";
+var _sessionKey = "";
+		function InitializeRolePlay() {
+            //startBtn.disabled = true;
+      var urlParams1 = new URLSearchParams(window.location.search)
+        if (urlParams1.has('ContentID')) {
+            console.log(urlParams1.get('ContentID').split("?")[0])
+            _ContentID = urlParams1.get('ContentID').split("?")[0];
+        }
+        if (urlParams1.has('FolderPath')) {
+          console.log(urlParams1.get('FolderPath').split("?")[0])
+          _FolderPath = urlParams1.get('FolderPath').split("?")[0];
+      }
+      if (urlParams1.has('PreviewPath')) {
+        console.log(urlParams1.get('PreviewPath').split("?")[0])
+        _PreviewPath = urlParams1.get('PreviewPath').split("?")[0];
+    }
+
+
+			var xhttp = new XMLHttpRequest();
+			/*
+			xhttp.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
+					if (xhttp.responseText != "") {
+						rolePlayData = JSON.parse(xhttp.responseText);
+                        setSessionStorage(_sessionKey, rolePlayData);
+						console.log(rolePlayData);
+                        const rolePlayConfigData = JSON.parse(JSON.parse(rolePlayData.RolePlayData));
+                        document.getElementById("welcomeMsg").innerHTML =  rolePlayConfigData.WelcomeMessage ;
+                        changeBackground(rolePlayConfigData.BackgroundType, rolePlayConfigData.BackgroundValue?.toString());
+						startBtn.disabled = false;
+								
+					}
+				}
+			};
+			*/
+            //startBtn.disabled = false;
+			var ClientURL = "http://" + window.location.hostname;
+            var WebAPIUrl= "";
+			//var basicPlatformData = JSON.parse(sessionStorage.getItem("basicPlatformData"));
+            var userSessionKey = "userContext_https://" + window.location.hostname;
+            console.log(userSessionKey);
+			var UserContext = JSON.parse(sessionStorage.getItem(userSessionKey));
+            console.log(UserContext);
+            if(UserContext == null){
+                userSessionKey = "userContext_https://" + window.location.hostname + "/";
+                console.log(userSessionKey);
+                UserContext = JSON.parse(sessionStorage.getItem(userSessionKey));
+                console.log(UserContext);
+            }
+            
+			/* if(basicPlatformData == null){
+				basicPlatformData = {
+					"WebAPIUrl" : "https://developerapi.instancy.com/api/"
+				}
+			} */
+			if(UserContext == null){
+				alert("Session Expired");
+                return;
+			}
+            else
+            {         
+                console.log(UserContext);
+                if(UserContext.jsWebAPIUrl != null)
+                {
+                    WebAPIUrl = UserContext.jsWebAPIUrl;
+                }
+                else
+                {
+                    var basicPlatformData = JSON.parse(sessionStorage.getItem("basicPlatformData"));
+                    console.log(basicPlatformData);
+                    if(basicPlatformData != null){
+                        WebAPIUrl = basicPlatformData.WebAPIUrl;
+                    }
+                }
+            }
+            _sessionKey = UserContext.UserID + "_" + UserContext.SiteID + "_" + _ContentID;
+            sessionStorage.setItem(_sessionKey + "_UNAME", UserContext.FirstName);
+            if(sessionStorage.getItem("sessionKey") != null){
+                sessionStorage.setItem("old_sessionKey", sessionStorage.getItem("sessionKey"));
+            }
+                
+            sessionStorage.setItem("sessionKey", _sessionKey);
+			/*
+			var rolePlay = {
+                contentID: _ContentID,
+                folderPath: _FolderPath,
+                previewPath: _PreviewPath,
+                SID:	UserContext.SiteID
+            }
+			*/
+           
+			// xhttp.open("post", WebAPIUrl + "AngularLMS/GetRolePlayData", true);
+			// xhttp.setRequestHeader("AllowWindowsandMobileApps", "allow");
+			// xhttp.setRequestHeader("UserID", UserContext.UserID);
+			// xhttp.setRequestHeader("SiteID", UserContext.SiteID);
+			// xhttp.setRequestHeader("ClientURL", UserContext.ClientURL);
+			// xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			// xhttp.setRequestHeader("Authorization", "Bearer " + UserContext.JwtToken);
+			// xhttp.send(new URLSearchParams(rolePlay).toString());
+            window.location.href = "main.html";
+		}
+        function setSessionStorage(key, jsonObject) {
+    sessionStorage.setItem(key, JSON.stringify(jsonObject));
+}
+function changeBackground(type, value) {
+    if (type === 'bgimage') {
+        document.documentElement.style.setProperty('--bg-style', `url('${value}')`);
+        document.documentElement.style.setProperty('--bg-color', 'transparent'); // Remove color
+    } else if (type === 'bgcolor') {
+        document.documentElement.style.setProperty('--bg-color', value);
+        document.documentElement.style.setProperty('--bg-style', 'none'); // Remove image
+    }
+}
+// Function to get a JSON object from sessionStorage
+function getSessionStorage(key) {
+    const data = sessionStorage.getItem(key);
+    return data ? JSON.parse(data) : null;
+}
+
+
+    </script>
+</body>
+
+</html>
