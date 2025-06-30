@@ -295,10 +295,11 @@ color: #ffffff;
 	</div>
 
 	<!-- Floating Chat Window -->
-	<div class="floating-chat-container" id="floatingChatContainer">
+	<div id="videos"></div>
+	<!-- <div class="floating-chat-container" id="floatingChatContainer">
 		<div class="floating-chat-header" id="floatingChatHeader">
 			<h3>AI Assistant</h3>
-			<button class="floating-chat-close" id="floatingChatClose">×</button>
+			<button class="floating-chat-close" id="floatingChatClose">Ã—</button>
 		</div>
 		<div id="floatingVideoContainer" class="floating-video-container"></div>
 		<div class="floating-chat-input">
@@ -307,7 +308,7 @@ color: #ffffff;
 				<button onclick="sendFloatingMessage()">Send</button>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<div id="toast-container"></div>
 	<script src="scripts.js" type="module"></script> 
@@ -392,18 +393,71 @@ function sendFloatingMessage(message) {
 window.sendFloatingMessage = sendFloatingMessage;
 
 // Allow Enter key to send message
-document.getElementById('floatingMessageInput').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        sendFloatingMessage();
-    }
-});
+// document.getElementById('floatingMessageInput').addEventListener('keypress', function(e) {
+//     if (e.key === 'Enter') {
+//         sendFloatingMessage();
+//     }
+// });
 
 // Only initialize chat on load and keep it always visible
 window.addEventListener('load', function() {
     // Initialize the floating chat system by default
     console.log('Floating chat system initialized');
-    initializeFloatingChat();
+    //initializeFloatingChat();
 });
+		document.addEventListener('DOMContentLoaded', async () => {
+
+  	const dailyCallManager = new DailyCallManager();
+	window.dailyCallManager = dailyCallManager;
+	try{
+		createConversation("rb17cf590e15").then(async ({ conversationId, conversationUrl }) => {
+		debugger;
+			// You can now use these values anywhere
+			dailyCallManager.conversationId = conversationId;
+			const roomUrl = conversationUrl; //document.getElementById('room-url').value.trim();       
+    		await dailyCallManager.joinRoom(roomUrl);
+			//initializeFloatingChat();
+	  });     
+	}catch{
+		//initializeFloatingChat();
+	}
+	     
+});
+async function createConversation(replicaId) {
+
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("x-api-key", "1f09d31e42ae475a9c2627bce961d939");
+
+  const raw = JSON.stringify({
+    replica_id: replicaId,
+  });
+
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+
+  try {
+    const response = await fetch("https://tavusapi.com/v2/conversations", requestOptions);
+    const data = await response.json();
+
+	
+    // Extract and return the fields you want
+    const conversationId = data?.conversation_id ?? '';
+    const conversationUrl = data?.conversation_url ?? '';
+
+    console.log("conversationId:", conversationId);
+    console.log("conversationUrl:", conversationUrl);
+
+    return { conversationId, conversationUrl };
+  } catch (error) {
+    console.error("Error creating conversation:", error);
+    return null;
+  }
+}
 	</script>
 </body>
 
