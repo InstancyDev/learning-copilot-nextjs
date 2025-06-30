@@ -576,27 +576,27 @@ const MyLearning: React.FC<MyLearningProps> = ({ user, onNavigate }) => {
       sessionStorage.setItem('chatbotplay_userContext', JSON.stringify(botResponse));
       
       // Create the FlowiseFullPageAIAssistant component
-      // const aiTutorComponent = (
-      //   <FlowiseFullPageAIAssistant
-      //     BotDetails={botResponse}
-      //     mode="ai-tutor"
-      //     contentId={item.id.toLowerCase()}
-      //     userContext={user}
-      //     apiHost={API_CONFIG.AIAgentURL}
-      //     userAvatarImage={API_CONFIG.LearnerURL.replace('http://', 'https://') + user.Picture}
-      //   />
-      // );
-      
-      // setEmbeddedComponent(aiTutorComponent);
-      // setPreviewItem(item);
-      // setPreviewUrl(null);
-      // setIsPreviewOpen(true);
+      const aiTutorComponent = (
+         <FlowiseFullPageAIAssistant
+           BotDetails={botResponse}
+           mode="ai-tutor"
+           contentId={item.id.toLowerCase()}
+           userContext={user}
+           apiHost={API_CONFIG.AIAgentURL}
+           userAvatarImage={API_CONFIG.LearnerURL.replace('http://', 'https://') + user.Picture}
+         />
+       );
+    
+       setEmbeddedComponent(aiTutorComponent);
+       setPreviewItem(item);
+       setPreviewUrl(null);
+       setIsPreviewOpen(true);
 
-      const url = `${window.location.origin}/learning-app/chatbotplay/index.html?FolderPath=${item?.folderPath}&ContentID=${item?.id}&PreviewPath=lcms&version=401409`;
-      setPreviewUrl(url);
-      setPreviewItem(item);
-      setEmbeddedComponent(null);
-      setIsPreviewOpen(true);
+      //const url = `${window.location.origin}/learning-app/chatbotplay/index.html?FolderPath=${item?.folderPath}&ContentID=${item?.id}&PreviewPath=lcms&version=401409`;
+      //setPreviewUrl(url);
+      //setPreviewItem(item);
+      //setEmbeddedComponent(null);
+      //setIsPreviewOpen(true);
     } catch (error) {
       console.error('Error fetching bot details:', error);
       showError('Preview Failed', 'Failed to load AI Tutor details. Please try again.');
