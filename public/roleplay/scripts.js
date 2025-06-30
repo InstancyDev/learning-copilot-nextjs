@@ -677,7 +677,7 @@ async function initialization() {
 
 }
 // Initialize Chatbot with the configuration object
-//initialization();
+initialization();
 
 
 function updateStatus(message, duration = 3000) {
@@ -1205,7 +1205,7 @@ class DailyCallManager {
        
     });	
    }
-   initialization();
+   //initialization();
    //  call Rople Start Button 
   } 
   
